@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { setInput } from "../../helper/inputHelper";
 import "./styles.css";
 
 const Form = () => {
@@ -26,7 +27,7 @@ const Form = () => {
     setPassword("");
     setCountry("");
   };
-  const setInput = (setter) => (e) => setter(e.target.value);
+  // const setInput = (setter) => (e) => setter(e.target.value);
 
   return (
     <div style={{ height: "110vh" }}>
