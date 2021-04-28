@@ -13,12 +13,18 @@ const Form = () => {
   const handlePassword = (e) => setPassword(e.target.value)
   const handleCountry = (e) => setCountry(e.target.value)
   const handleSubmit = (e) => {
+    e.preventDefault()// for not refresh page after submit
     alert(`
     username: ${name}
     email: ${email}
     password: ${password}
     country: ${country}
     `)
+    //for clean input value
+    setName("")
+    setEmail("")
+    setPassword("")
+    setCountry("")
   }
   
   return (
