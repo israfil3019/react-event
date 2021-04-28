@@ -2,31 +2,32 @@ import { useState } from "react";
 import "./styles.css";
 
 const Form = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [country, setCountry] = useState("");
 
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [country, setCountry] = useState("")
+  // const handleName = (e) => setName(e.target.value)
+  // const handleEmail = (e) => setEmail(e.target.value)
+  // const handlePassword = (e) => setPassword(e.target.value)
+  // const handleCountry = (e) => setCountry(e.target.value)
 
-  const handleName = (e) => setName(e.target.value)
-  const handleEmail = (e) => setEmail(e.target.value)
-  const handlePassword = (e) => setPassword(e.target.value)
-  const handleCountry = (e) => setCountry(e.target.value)
   const handleSubmit = (e) => {
-    e.preventDefault()// for not refresh page after submit
+    e.preventDefault(); // for not refresh page after submit
     alert(`
     username: ${name}
     email: ${email}
     password: ${password}
     country: ${country}
-    `)
+    `);
     //for clean input value
-    setName("")
-    setEmail("")
-    setPassword("")
-    setCountry("")
-  }
-  
+    setName("");
+    setEmail("");
+    setPassword("");
+    setCountry("");
+  };
+  const setInput = (setter) => (e) => setter(e.target.value);
+
   return (
     <div style={{ height: "110vh" }}>
       <form onSubmit={handleSubmit}>
@@ -37,10 +38,10 @@ const Form = () => {
           </label>
           <br />
           <input
-            value= {name}
+            value={name}
             type="text"
             placeholder="name"
-            onChange={handleName}
+            onChange={setInput(setName)}
           />
         </div>
         <div>
@@ -50,10 +51,10 @@ const Form = () => {
           </label>
           <br />
           <input
-            value= {email}
+            value={email}
             type="email"
             placeholder="email"
-            onChange={handleEmail}
+            onChange={setInput(setEmail)}
           />
         </div>
         <div>
@@ -63,10 +64,10 @@ const Form = () => {
           </label>
           <br />
           <input
-            value= {password}
+            value={password}
             type="password"
             placeholder="pass"
-            onChange={handlePassword}
+            onChange={setInput(setPassword)}
           />
         </div>
         <div style={{ margin: "10px auto" }}>
@@ -75,11 +76,11 @@ const Form = () => {
             <strong>Country: </strong>
           </label>
           <select
-            value= {country}
-            onChange={handleCountry}  
+            value={country}
+            onChange={setInput(setCountry)}
             style={{ marginTop: "10px", width: "100px", padding: "10px" }}
           >
-            <option value="" >Country</option>
+            <option value="">Country</option>
             <option value="Turkey">Turkey</option>
             <option value="Germany">Germany</option>
             <option value="Netherland">Netherland</option>
